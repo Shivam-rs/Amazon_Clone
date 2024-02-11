@@ -19,8 +19,21 @@
     <button onclick="
       letsPlay('Scissors');
     ">Scissors</button>
+
+    <button onclick="
+      stats.won = 0;
+      stats.lost = 0;
+      stats.tied = 0;
+    ">Reset</button>
     
     <script>
+      
+      const stats = {
+        won: 0,
+        lost: 0,
+        tied: 0
+      };
+
       function computerMoveGen(){
         const randomSr = Math.random();
         let computerMove = '';
@@ -70,13 +83,19 @@
 
       function displayAlert(playerMove, computerMove, status){
         if(status === 'Won'){
-            alert(`You picked ${playerMove} and computer picked ${computerMove}. You ${status}!!!!`);
+            stats.won +=1;
+            alert(`You picked ${playerMove} and computer picked ${computerMove}. You ${status}!!!!
+Won: ${stats.won}, Lost: ${stats.lost} & ties: ${stats.tied}`);
 
         }else if( status === 'Lost'){
-          alert(`You picked ${playerMove} and computer picked ${computerMove}. opps!! you ${status} the match`);
-          
+          stats.lost +=1;
+          alert(`You picked ${playerMove} and computer picked ${computerMove}. opps!! you ${status} the match
+Won: ${stats.won}, Lost: ${stats.lost} & ties: ${stats.tied}`);
+
         }else if(status === 'Tied'){
-          alert(`You picked ${playerMove} and computer also picked ${computerMove}. Match has ${status}`);
+          stats.tied += 1;
+          alert(`You picked ${playerMove} and computer also picked ${computerMove}. Match has ${status}
+Won: ${stats.won}, Lost: ${stats.lost} & ties: ${stats.tied}`);
         }
       }
     </script>
