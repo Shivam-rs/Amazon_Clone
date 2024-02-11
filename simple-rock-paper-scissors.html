@@ -3,42 +3,82 @@
   <head>
     <title>Rock Paper Scissors</title>
   </head>
+  
   <body>
     <p>
       Lets start the game
     </p>
     <button onclick="
-      const randomNo = Math.random();
-      if(randomNo < (1/3)) {
-        computerChoice = '';
-        computerChoice += Rock;
-      }
-      else if(randomNo < (2/3)){
-        computerChoice = '';
-        computerChoice += Paper;
-      }else{
-        computerChoice = '';
-        computerChoice += Scissors;
-      }
-
-      if(computerChoice === 'Rock'){
-        result = 'Tie';
-        alert(`You picked ${'Rock'} and computer picked ${computerChoice}. Match is ${result}`);
-      }else if(computerChoice === 'Paper'){
-        result = 'lose';
-        alert(`You picked ${'Rock'} and computer picked ${computerChoice}. Match is ${result}`);
-      }else{
-        result = 'won';
-        alert(`You picked ${'Rock'} and computer picked ${computerChoice}. Match is ${result}`);
-      }
+      letsPlay('Rock');
     ">Rock</button>
     
-    <button>Paper</button>
-    <button>Scissors</button>
+    <button onclick="
+      letsPlay('Paper');
+    ">Paper</button>
+    
+    <button onclick="
+      letsPlay('Scissors');
+    ">Scissors</button>
     
     <script>
-      let computerChoice = '';
-      let result = '';
+      function computerMoveGen(){
+        const randomSr = Math.random();
+        let computerMove = '';
+        if(randomSr < (1/3)) { 
+          computerMove = 'Rock';
+        }
+        else if(randomSr < (2/3)){
+          computerMove = 'Paper';
+        }else{
+          computerMove = 'Scissors';
+        }
+
+        return computerMove;
+      }
+
+      function letsPlay(playerMove){
+        let computerMove = computerMoveGen();
+
+        if(playerMove == 'Scissors'){
+            if(computerMove === 'Rock'){
+              displayAlert(playerMove, computerMove, 'Lost');
+            }else if(computerMove === 'Paper'){
+              displayAlert(playerMove, computerMove, 'Won');
+            }else{
+              displayAlert(playerMove, computerMove, 'Tied');
+            }
+
+        }else if(playerMove == 'Paper'){
+            if(computerMove === 'Rock'){
+              displayAlert(playerMove, computerMove, 'Won');
+            }else if(computerMove === 'Paper'){
+              displayAlert(playerMove, computerMove, 'Tied');
+            }else{
+              displayAlert(playerMove, computerMove, 'Lost');
+            }
+
+        }else if(playerMove == 'Rock'){
+            if(computerMove === 'Rock'){
+              displayAlert(playerMove, computerMove, 'Tied');
+            }else if(computerMove === 'Paper'){
+              displayAlert(playerMove, computerMove, 'Lost');
+            }else{
+              displayAlert(playerMove, computerMove, 'Won');
+            }
+        }
+      }
+
+      function displayAlert(playerMove, computerMove, status){
+        if(status === 'Won'){
+            alert(`You picked ${playerMove} and computer picked ${computerMove}. You ${status}!!!!`);
+
+        }else if( status === 'Lost'){
+          alert(`You picked ${playerMove} and computer picked ${computerMove}. opps!! you ${status} the match`);
+          
+        }else if(status === 'Tied'){
+          alert(`You picked ${playerMove} and computer also picked ${computerMove}. Match has ${status}`);
+        }
+      }
     </script>
   </body>
 </html>
