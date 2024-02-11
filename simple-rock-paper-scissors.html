@@ -21,19 +21,20 @@
     ">Scissors</button>
 
     <button onclick="
-      stats.won = 0;
-      stats.lost = 0;
-      stats.tied = 0;
+      score.won = 0;
+      score.lost = 0;
+      score.tied = 0;
+      localStorage.removeItem('score');
     ">Reset</button>
     
     <script>
       
-      const stats = {
+      let score = JSON.parse(localStorage.getItem('score')) ||{
         won: 0,
         lost: 0,
         tied: 0
       };
-
+      
       function computerMoveGen(){
         const randomSr = Math.random();
         let computerMove = '';
@@ -83,21 +84,24 @@
 
       function displayAlert(playerMove, computerMove, status){
         if(status === 'Won'){
-            stats.won +=1;
+            score.won +=1;
             alert(`You picked ${playerMove} and computer picked ${computerMove}. You ${status}!!!!
-Won: ${stats.won}, Lost: ${stats.lost} & ties: ${stats.tied}`);
+Won: ${score.won}, Lost: ${score.lost} & ties: ${score.tied}`);
 
         }else if( status === 'Lost'){
-          stats.lost +=1;
+          score.lost +=1;
           alert(`You picked ${playerMove} and computer picked ${computerMove}. opps!! you ${status} the match
-Won: ${stats.won}, Lost: ${stats.lost} & ties: ${stats.tied}`);
+Won: ${score.won}, Lost: ${score.lost} & ties: ${score.tied}`);
 
         }else if(status === 'Tied'){
-          stats.tied += 1;
+          score.tied += 1;
           alert(`You picked ${playerMove} and computer also picked ${computerMove}. Match has ${status}
-Won: ${stats.won}, Lost: ${stats.lost} & ties: ${stats.tied}`);
+Won: ${score.won}, Lost: ${score.lost} & ties: ${score.tied}`);
         }
+        localStorage.setItem('score', JSON.stringify(score));
       }
+
+       
     </script>
   </body>
 </html>
