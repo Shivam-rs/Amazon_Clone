@@ -85,17 +85,23 @@
       function displayAlert(playerMove, computerMove, status){
         if(status === 'Won'){
             score.won +=1;
-            alert(`You picked ${playerMove} and computer picked ${computerMove}. You ${status}!!!!
+            alert(`You picked ${playerMove} and computer picked ${computerMove}. 
+You ${status}!!!!
+
 Won: ${score.won}, Lost: ${score.lost} & ties: ${score.tied}`);
 
         }else if( status === 'Lost'){
           score.lost +=1;
-          alert(`You picked ${playerMove} and computer picked ${computerMove}. opps!! you ${status} the match
+          alert(`You picked ${playerMove} and computer picked ${computerMove}. 
+Opps!! you ${status} the match
+
 Won: ${score.won}, Lost: ${score.lost} & ties: ${score.tied}`);
 
         }else if(status === 'Tied'){
           score.tied += 1;
-          alert(`You picked ${playerMove} and computer also picked ${computerMove}. Match has ${status}
+          alert(`You picked ${playerMove} and computer also picked ${computerMove}.
+Match has ${status}
+
 Won: ${score.won}, Lost: ${score.lost} & ties: ${score.tied}`);
         }
         localStorage.setItem('score', JSON.stringify(score));
