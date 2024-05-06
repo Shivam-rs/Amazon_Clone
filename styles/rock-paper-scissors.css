@@ -1,0 +1,57 @@
+body{
+    background-color: rgb(25, 25, 25);
+    color: white;
+    font-family: Arial;
+    font-size: 25px;
+}
+
+.header{
+    font-size: 150%;
+    font-size: 50px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.title{
+    font-size: 100%;
+    font-style: italic;
+    text-align: center;
+}
+
+.move-icon{
+    height: 50px;
+}
+
+.buttons{
+    text-align: center;
+}
+
+.move-button{
+    background-color: transparent;
+    border: 3px solid white;
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.match-details{
+    font-size: 20px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.results{
+    margin-top: 50px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.reset-button{
+    border: none;
+    font-size: 16px;
+    padding: 8px 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
